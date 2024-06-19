@@ -1,0 +1,341 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Symbols Nerd Font", "Agave Nerd Font", "Font Awesome", "Comfortaa";
+    font-size: 14px;
+    font-weight: 800;
+    min-height: 0;
+  }
+  
+  window#waybar {
+    /* background: rgb(39, 39, 39); */
+    background: transparent;
+    /*    background-color: rgba(43, 48, 59, 0.5); */
+    /*    border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    transition: 0.5s linear;
+  }
+  
+  window#waybar.hidden {
+    opacity: 0.2;
+  }
+  
+  #waybar.empty #window {
+    background-color: transparent;
+  }
+
+  tooltip label {
+    font-size: 14px;
+  }
+  
+  #workspaces {
+    border-radius: 16px;
+    background: #8CF6D4;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-right: -16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+  #workspaces.DP-3 {
+    border-radius: 16px;
+    background: #8CF6D4;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+/*   
+  #window {
+    margin-right: 4px;
+  }
+
+  #window.className {
+    font-size: 4px;
+    color: gray;
+    font-weight: bold;
+  }
+
+  #window.titleName {
+    font-size: 8px;
+    color: #FFFFFF;
+    padding-right: 12px;
+  } */
+  
+  button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -4px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+  }
+  
+  #workspaces button {
+    padding: 1px 2px 0px 2px;
+    color: #17191e;
+    transition: 0.1s linear;
+    /*    background-color: rgba(0,0,0,0.3); */
+  }
+
+  #workspaces.DP-3 button {
+    border-radius: 4px;
+    padding: 1px 4px 0px 4px;
+    color: #17191e;
+    transition: 0.1s linear;
+    /*    background-color: rgba(0,0,0,0.3); */
+  }
+
+  #workspaces button:hover {
+    background: #8CF6D4;
+  }
+
+  #workspaces.DP-3 button:hover {
+    background: #8CF6D4;
+  }
+  
+  #workspaces button.active {
+    padding: 3px 4px 0px 4px;
+    /*    box-shadow: inset 0 -2px #c9545d; */
+    /* background-color: rgba(37, 55, 50, 0.3); */
+    color: #17191e;
+    transition: 0.1s linear;
+    border-bottom: 2px solid #17191e;
+  }
+  
+  #workspaces.DP-3 button.active {
+    padding: 1px 4px 0px 4px;
+    /*    box-shadow: inset 0 -2px #c9545d; */
+    /* background-color: rgba(37, 55, 50, 0.3); */
+    color: #17191e;
+    transition: 0.1s linear;
+    border-bottom: 0px solid #17191e;
+  }
+  
+  #workspaces button.empty {
+    opacity: 0.5;
+  }
+  
+  #workspaces button.urgent {
+    background-color: #f694a5;
+    border-radius: 4px;
+  }
+  
+  #submap {
+    background-color: #f694a5;
+    border-radius: 16px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-right: 8px;
+    color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  #clock,
+  #cpu,
+  #memory,
+  #disk,
+  #temperature,
+  #backlight,
+  #network,
+  #wireplumber,
+  #custom-media,
+  #mode,
+  #idle_inhibitor,
+  #scratchpad,
+  #mpd {
+    margin: 2px;
+    padding-left: 8px;
+    padding-top: 2px;
+    color: #17191e;
+  }
+
+  #tray {
+    margin: 2px;
+    color: #17191e;
+    padding-bottom: 2px;
+    padding-right: 16px;
+  }
+
+  #language {
+    margin-top: 2px;
+    padding-left: 8px;
+    padding-right: 4px;
+    color: #17191e;
+  }
+
+  #battery {
+    margin: 4px;
+    color: #17191e;
+    padding-top: 2px;
+    padding-left: 0px;
+    padding-right: 8px;
+  }
+
+  .modules-left {
+    border-radius: 16px;
+    background-color: #8CF6D4;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-bottom: 4px;
+  }
+
+  .modules-center {
+    border-radius: 16px;
+    background-color: #8CF6D4;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .modules-right {
+    border-radius: 16px;
+    background-color: #8CF6D4;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-right: 12px;
+  }
+
+  .squareMon .modules-right {
+    background-color: transparent;
+    margin-top: 4px;
+    margin-left: 4px;
+  }
+  
+  #clock.date {
+    font-size: 16px;
+    font-weight: 500;
+    color: #17191e;
+    padding-right: 16px;
+    padding-top: 2px;
+    margin-right: -16px;
+  }
+
+  #clock.time {
+    font-size: 16px;
+    font-weight: 500;
+    color: #17191e;
+    padding-right: 16px;
+    padding-top: 2px;
+  }
+  
+  #battery icon {
+    color: red;
+  }
+  
+  #battery.warning:not(.charging) {
+    background-color: #f5ab3c;
+    color: #000000;
+    border-radius: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 8px;
+  }
+  
+  #battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    border-radius: 16px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 8px;
+  }
+  
+  label:focus {
+    background-color: #000000;
+  }
+  
+  #network.disconnected {
+    background-color: #f53c3c;
+  }
+  
+  #temperature.critical {
+    background-color: #eb4d4b;
+  }
+  
+  #idle_inhibitor.activated {
+    background-color: #ecf0f1;
+    color: #2d3436;
+  }
+
+  #tray menu {
+    margin-left: -12px;
+    font-size: 8px;
+  }
+  
+  #tray > .passive {
+    -gtk-icon-effect: dim;
+  }
+  
+  #tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+  }
+  
+  #mpris,
+  #custom-spotify {
+    /* border-right: 2px solid #17191e; */
+    padding-left: 16px;
+    padding-right: 0px;
+    padding-top: 2px;
+    color: #17191e;
+    font-weight: 400;
+  }
+
+  #cava {
+    /* border-right: 2px solid #17191e; */
+    /* padding-top: 2px; */
+    margin-top: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+    color: #17191e;
+  }
+
+  #pulseaudio {
+    margin-top: 2px;
+    color: #17191e;
+    background-color: transparent;
+    padding-left: 4px;
+    padding-right: 10px;
+  }
+
+  #custom-poweroff {
+    color: #b74949;
+    margin-top: 2px;
+    padding-right: 1px;
+    font-size: 12px;
+  }
+
+  #custom-logout {
+    color: #275e9a;
+    padding-right: 8px;
+    margin-top: 1px;
+  }
+
+  #custom-suspend {
+    color: #a357c1;
+    padding-right: 8px;
+    font-size: 14px;
+  }
+
+  #custom-reboot {
+    color: #d2955c;
+    padding-top: 1px;
+    padding-right: 8px;
+    font-size: 16px;
+  }
+  
+  /*
+  
+  window#waybar.solo {
+  background-color: #FFFFFF;
+  }
+  
+  window#waybar.termite {
+  background-color: #3F3F3F;
+  }
+  
+  window#waybar.chromium {
+  background-color: #000000;
+  border: none;
+  }
+   */

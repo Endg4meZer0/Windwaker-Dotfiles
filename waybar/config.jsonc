@@ -1,0 +1,264 @@
+[{
+    "name": "squareMon",
+    "output": "DP-3",
+    "reload_style_on_change": true,
+    "layer": "top",
+    "height": 36,
+    "spacing": 0,
+    "modules-left": [],
+    "modules-center": [],
+    "modules-right": ["mpris", "hyprland/workspaces#DP-3"],
+    "hyprland/workspaces#DP-3": {
+        "disable-scroll": false,
+        "persistent-workspaces": 
+        {
+            "HDMI-A-1": [1,2,3,4,5,6],
+            "DP-3": [10,11,12]
+        },
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "10": "",
+            "11": "",
+            "12": ""
+        }
+    },
+    "mpris": {
+        "ignored-players": [
+            "vesktop"
+        ],
+        "dynamic-order": [
+            "artist",
+            "title"
+        ],
+        "dynamic-importance-order": [
+            "artist",
+            "title",
+            "position",
+            "length",
+            "album"
+        ],
+        "dynamic-len": 88,
+        "interval": 1,
+        "format": "{player_icon} {dynamic}",
+        "tooltip-format": "{player}: {artist} - {title} - {album}",
+        "player-icons": {
+            "default": ""
+        }
+    }
+},
+{
+    "name": "main",
+    "output": "HDMI-A-1",
+    "reload_style_on_change": true,
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-center": ["hyprland/workspaces", "hyprland/submap", "group/centralPart"],
+    //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["hyprland/language", "pulseaudio", "group/powerstuff"],
+    // Modules configuration
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "persistent-workspaces": 
+        {
+            "HDMI-A-1": [1,2,3,4,5,6],
+            "DP-3": [10,11,12]
+        },
+        "warp-on-scroll": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "I",
+            "2": "II",
+            "3": "III",
+            "4": "IV",
+            "5": "V",
+            "6": "VI",
+            "7": "VII",
+            "8": "VIII",
+            "9": "IX"
+        },
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+    "hyprland/submap": {
+        "tooltip": false
+    },
+    "hyprland/window": {
+        "format": "",
+        "icon": true,
+        "icon-size": 24
+    },
+    "hyprland/window#className": {
+        "format": "{class}",
+        "icon": false
+    },
+    "hyprland/window#titleName": {
+        "format": "{title}",
+        "icon": false,
+        "max-length": 42
+    },
+    "group/windowName": {
+        "orientation": "orthogonal",
+        "modules": [
+            "hyprland/window#className",
+            "hyprland/window#titleName"
+        ]
+    },
+    "group/window": {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/window",
+            "group/windowName"
+        ]
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "us",
+        "format-ru": "ru"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        "show-passive-items": true
+    },
+    "clock#date": {
+        "interval": 60,
+        "timezone": "Asia/Vladivostok",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%a %Y-%m-%d}",
+        "format": "󰃭  {:L%a %Y-%m-%d}",
+        //"format": "{:%Y-%m-%d %H:%M}"
+        "on-click-right": "orage",
+        "calendar": {
+                    "mode"          : "year",
+                    "mode-mon-col"  : 3,
+                    "weeks-pos"     : "right",
+                    "on-scroll"     : 1,
+                    "format": {
+                              "months":     "<span color='#d3ffea'><b>{}</b></span>",
+                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                              "weeks":      "<span color='#ffcc66'><b>W{}</b></span>",
+                              "weekdays":   "<span color='#3afcbb'><b>{}</b></span>",
+                              "today":      "<span color='#3afcbb'><b><u>{}</u></b></span>"
+                              }
+                    }
+    },
+    "clock#time": {
+        "interval": 1,
+        "timezone": "Asia/Vladivostok",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format-alt": "{:%a %Y-%m-%d}",
+        "format": "󰥔  {:L%H:%M:%S}"
+        //"format": "{:%Y-%m-%d %H:%M}"
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 20,
+            "critical": 10
+        },
+        "interval": 15,
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "󰕾 {volume}%{format_source}",
+        "format-bluetooth": " {volume}%{format_source}",
+        "format-bluetooth-muted": " 󰸈{format_source}",
+        "format-muted": "󰸈{format_source}",
+        "format-source": "",
+        "format-source-muted": " ",
+        "format-icons": {
+            "headphone": "",
+//            "hands-free": "",
+//            "headset": "",
+//            "phone": "",
+//            "portable": "",
+//            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol"
+    },
+    // "custom/spotify": {
+    //     "exec": "~/.config/waybar/scripts/checkSpotify.sh",
+    //     "interval": 2,
+    //     "return-type": "json",
+    //     "format": "󰓇  {} {icon}",
+    //     "format-icons": {
+    //         "Playing": " ",
+    //         "Paused": " ",
+    //         "None": ""
+    //     },
+    //     "max-length": 42,
+    //     "on-click": "playerctl --player=spotify play-pause",
+    //     "on-click-right": "hyprctl dispatch workspace 5",
+    //     "on-scroll-up": "playerctl --player=spotify previous",
+    //     "on-scroll-down": "playerctl --player=spotify next",
+    //     "escape": true
+    // }, 
+    "group/centralPart": {
+        "orientation": "horizontal",
+		"modules": [
+			"group/datetime",
+			"tray"
+		],
+        "drawer": {
+            "transition-left-to-right": true
+        }
+    },
+    "group/datetime": {
+        "orientation": "horizontal",
+        "modules": [
+            "clock#date",
+            "clock#time"
+        ]
+    },
+    "custom/poweroff": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "systemctl poweroff"
+    },
+    "custom/logout": {
+        "format": "󰍃",
+        "tooltip": false,
+        "on-click": "hyprctl dispatch exit"
+    },
+    "custom/suspend": {
+        "format": "󰖔",
+        "tooltip": false,
+        "on-click": "systemctl suspend"
+    },
+    "custom/reboot": {
+        "format": "󰜉",
+        "tooltip": false,
+        "on-click": "systemctl reboot"
+    },
+    "group/powerstuff": {
+        "orientation": "horizontal",
+		"modules": [
+			"custom/poweroff",
+			"custom/logout",
+			"custom/suspend",
+            "custom/reboot"
+		],
+        "drawer": {
+            "transition-left-to-right": false
+        }
+    }
+}]
