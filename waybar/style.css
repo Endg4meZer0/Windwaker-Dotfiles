@@ -42,8 +42,8 @@
     padding-left: 12px;
     padding-right: 12px;
     margin-right: 0px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
 /*   
   #window {
@@ -64,10 +64,14 @@
   
   button {
     /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -4px transparent;
+    box-shadow: none;
     /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
+  }
+
+  button:hover {
+    box-shadow: none;
   }
   
   #workspaces button {
@@ -78,7 +82,6 @@
   }
 
   #workspaces.DP-3 button {
-    border-radius: 4px;
     padding: 1px 4px 0px 4px;
     color: #17191e;
     transition: 0.1s linear;
@@ -91,6 +94,7 @@
 
   #workspaces.DP-3 button:hover {
     background: #8CF6D4;
+    color: #21242b;
   }
   
   #workspaces button.active {
@@ -159,7 +163,7 @@
 
   #language {
     margin-top: 2px;
-    padding-left: 8px;
+    padding-left: 12px;
     padding-right: 4px;
     color: #17191e;
   }
@@ -192,6 +196,7 @@
     background-color: #8CF6D4;
     margin-top: 4px;
     margin-bottom: 4px;
+    margin-right: 4px;
     padding-right: 12px;
   }
 
@@ -274,10 +279,15 @@
   #mpris,
   #custom-spotify {
     /* border-right: 2px solid #17191e; */
+    border-radius: 16px;
     padding-left: 16px;
-    padding-right: 0px;
+    padding-right: 16px;
+    margin-right: 8px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     padding-top: 2px;
     color: #17191e;
+    background-color: #8CF6D4;
     font-weight: 400;
   }
 
