@@ -5,9 +5,31 @@
     "layer": "top",
     "height": 36,
     "spacing": 0,
-    "modules-left": [],
+    "modules-left": ["custom/playerctl-lyrics"],
     "modules-center": [],
-    "modules-right": ["mpris", "hyprland/workspaces#DP-3"],
+    "modules-right": ["cava", "mpris"],
+    "cava": {
+//        "cava_config": "$XDG_CONFIG_HOME/cava/cava.conf",
+        "framerate": 30,
+        "autosens": 1,
+        "bars": 24,
+        "lower_cutoff_freq": 50,
+        "higher_cutoff_freq": 14000,
+        "method": "pipewire",
+        "source": "auto",
+        "stereo": true,
+        "reverse": false,
+        "bar_delimiter": 0,
+        "monstercat": false,
+        "waves": false,
+        "hide_on_silence": true,
+        "noise_reduction": 0.33,
+        "input_delay": 2,
+        "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "actions": {
+                   "on-click": "playerctl play-pause"
+                   }
+    },
     "hyprland/workspaces#DP-3": {
         "disable-scroll": false,
         "persistent-workspaces": 
@@ -25,7 +47,7 @@
     },
     "mpris": {
         "ignored-players": [
-            "vesktop"
+            "armcord"
         ],
         "dynamic-order": [
             "artist",
@@ -40,11 +62,21 @@
         ],
         "dynamic-len": 88,
         "interval": 1,
-        "format": "{player_icon} {dynamic}",
+        "format": "{status_icon}{dynamic}",
         "tooltip-format": "{player}: {artist} - {title} - {album}",
-        "player-icons": {
-            "default": ""
+        "status-icons": {
+            "playing": "",
+            "paused": " ",
+            "stopped": " "
         }
+    },
+    "custom/playerctl-lyrics": {
+        "exec": "/drvD/Profile/Documents/Coding/playerctl-lyrics/playerctl-lyrics",
+        "hide-empty-text": true,
+        "format": "󰝚 {}",
+        "max-length": 88,
+        "tooltip": false,
+        "escape": true
     }
 },
 {
@@ -57,9 +89,9 @@
     // "width": 1280, // Waybar width
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-center": ["hyprland/workspaces", "hyprland/submap", "group/centralPart"],
+    "modules-center": ["group/centralPart"],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["hyprland/language", "pulseaudio", "group/powerstuff"],
+    "modules-right": ["pulseaudio", "group/powerstuff"],
     // Modules configuration
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -128,9 +160,10 @@
     "clock#date": {
         "interval": 60,
         "timezone": "Asia/Vladivostok",
+        "tooltip": false,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "format-alt": "{:%a %Y-%m-%d}",
-        "format": "󰃭  {:L%a %Y-%m-%d}",
+        "format": "󰃭 {:L%a %Y-%m-%d}",
         //"format": "{:%Y-%m-%d %H:%M}"
         "on-click-right": "orage",
         "calendar": {
@@ -150,9 +183,10 @@
     "clock#time": {
         "interval": 1,
         "timezone": "Asia/Vladivostok",
+        "tooltip": false,
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // "format-alt": "{:%a %Y-%m-%d}",
-        "format": "󰥔  {:L%H:%M:%S}"
+        "format": "󰥔 {:L%H:%M:%S}"
         //"format": "{:%Y-%m-%d %H:%M}"
     },
     "backlight": {
@@ -177,20 +211,20 @@
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "󰕾 {volume}%{format_source}",
+        "format": "{icon} {volume}%{format_source}",
         "format-bluetooth": " {volume}%{format_source}",
         "format-bluetooth-muted": " 󰸈{format_source}",
-        "format-muted": "󰸈{format_source}",
+        "format-muted": " 0%{format_source}",
         "format-source": "",
         "format-source-muted": " ",
         "format-icons": {
-            "headphone": "",
+//            "headphone": "",
 //            "hands-free": "",
 //            "headset": "",
 //            "phone": "",
 //            "portable": "",
 //            "car": "",
-            "default": ["", "", ""]
+            "default": ["", "", ""]
         },
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol"
@@ -230,22 +264,22 @@
         ]
     },
     "custom/poweroff": {
-        "format": "",
+        "format": "󰐥",
         "tooltip": false,
         "on-click": "systemctl poweroff"
     },
     "custom/logout": {
         "format": "󰍃",
         "tooltip": false,
-        "on-click": "hyprctl dispatch exit"
+        "on-click": "niri msg quit"
     },
     "custom/suspend": {
-        "format": "󰖔",
+        "format": "󰤄",
         "tooltip": false,
         "on-click": "systemctl suspend"
     },
     "custom/reboot": {
-        "format": "󰜉",
+        "format": "󰑓",
         "tooltip": false,
         "on-click": "systemctl reboot"
     },
