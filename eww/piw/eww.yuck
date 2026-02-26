@@ -1,0 +1,36 @@
+;; Start the process to follow changes in artUrl and update the image path
+(deflisten player_image_path :initial "file://"
+    `sh ./albumart_gowall.sh`)
+    
+;; Define the widget for displaying the image
+(defwidget player-image-widget []
+  (eventbox :class "pi-eventbox"
+    :onclick "playerctl -i firefox play-pause"
+    :onmiddleclick "playerctl -i firefox previous"
+    :onrightclick "playerctl -i firefox next"
+    (box :class "pi-box"
+       :halign "center"
+       :valign "center"
+       :width 520
+       :height 520
+       (image 
+        :path {player_image_path == "y" ? "/tmp/eww-piw-art.jpg" : ""} 
+        :class {player_image_path == "y" ? "pi" : "pi no-shadow"}
+        :image-width 520
+        :image-height 520))))
+
+(defwindow player-image-window
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 240 :y 240 :width 520 :height 520)
+  :namespace "eww-piw-background"
+  :monitor 0
+  (player-image-widget))
+
+(defwindow player-image-window-external
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 240 :y 240 :width 520 :height 520)
+  :namespace "eww-piw-background"
+  :monitor 1
+  (player-image-widget))

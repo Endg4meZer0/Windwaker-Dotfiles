@@ -1,0 +1,114 @@
+;; Start the process to follow changes in artUrl and update the image path
+(deflisten lrcsnc_output :initial `{"text":"","instr":"","title":"","artists":""}`
+    `~/Coding/lrcsnc-lbl-client/lrcsnc-lbl-client`)
+    
+;; Define the widget for displaying the image
+(defwidget lrcsnc-text []
+  (box 
+       :orientation "v"
+       :halign "start"
+       (label :class "lrcsnc-text"
+        :text {lrcsnc_output?.["text"]} 
+        :wrap true 
+        :show-truncated false 
+        :vexpand true 
+        :halign "start"
+        :width 460
+        :xalign 0
+        :valign "start"
+        :justify "left")))
+
+(defwidget lrcsnc-instr []
+    (box 
+       :orientation "v"
+        :halign "end"
+        :width 60
+        (label :class "lrcsnc-instr" 
+            :text {lrcsnc_output?.["instrumental"]} 
+            :show-truncated false 
+            :halign "end"
+            :hexpand true
+            :valign "start"
+            :justify "right")))
+
+(defwidget lrcsnc-artist []
+    (box
+       :orientation "h"
+       :valign "start"
+       :width 40
+       :height 524
+       (label :class "lrcsnc-artist"
+            :text {lrcsnc_output?.["artists"]}
+            :halign "end"
+            :angle 90
+            :wrap false
+            :valign "start"
+            :justify "right")))
+
+(defwidget lrcsnc-title []
+    (box
+       :orientation "v"
+       :halign "start"
+       :width 520
+       (label :class "lrcsnc-title"
+            :text {lrcsnc_output?.["title"]}
+            :halign "start"
+            :wrap false
+            :valign "end"
+            :justify "left")))
+
+(defwindow lrcsnc-artist-window
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 196 :y 240 :width 40 :height 520)
+  :namespace "eww-lrcsnc"
+  :monitor 0
+  (box :class "lrcsnc-artist-box"
+    :orientation "v"
+    :halign "end"
+    :width 40
+    :height 524
+    (lrcsnc-artist)))
+
+(defwindow lrcsnc-title-window
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 240 :y 196 :width 520 :height 40)
+  :namespace "eww-lrcsnc"
+  :monitor 0
+  (box :class "lrcsnc-title-box"
+    :orientation "h"
+    :valign "end"
+    :width 520
+    :height 40
+    (lrcsnc-title)))
+
+(defwindow lrcsnc
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 240 :y 770 :width 520 :height 400)
+  :namespace "eww-lrcsnc"
+  :monitor 0
+  (box :class "lrcsnc"
+    :orientation "h"
+    :valign "start"
+    :width 520
+    :height 400
+    :space-evenly false
+    (lrcsnc-text)
+    (lrcsnc-instr)))
+
+(defwindow lrcsnc-external
+  :stacking "bottom"
+  :exclusive false
+  :geometry (geometry :x 240 :y 770 :width 520 :height 400)
+  :namespace "eww-lrcsnc"
+  :monitor 1
+  (box :class "lrcsnc"
+    :orientation "h"
+    :valign "start"
+    :width 520
+    :height 400
+    :space-evenly false
+    (lrcsnc-text)
+    (lrcsnc-instr)))

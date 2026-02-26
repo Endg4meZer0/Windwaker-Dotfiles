@@ -1,0 +1,85 @@
+*{
+    all: unset
+}
+
+$background: #000000;
+$foreground: #dfefeb;
+
+$black: #485655;
+$red: #f694a5;
+$green: #8bf6d4;
+$yellow: #f5ec78;
+$blue: #8fa6f6;
+$magenta: #d895f6;
+$cyan: #79cbf5;
+$white: $foreground;
+
+.bar-box-main {
+    background: $green;
+}
+
+.bar-widget-clock-text, .bar-widget-date-text {
+    font-family: "Windwaker";
+    font-size: 40px;
+    color: $background;
+    letter-spacing: 0px;
+    
+}
+
+.bar-cool-phrase {
+    color: $background;
+    font-style: italic;
+    font-family: "Linerama";
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.bar-cava-block {
+    background-color: $background;
+}
+
+.bar-audio-box {
+    background-color: $green;
+    &.extra {
+        background-color: $red;
+    }
+    &.muted {
+        background-color: $background;
+    }
+}
+
+.bar-battery-box {
+    background-color: $green;
+    &.warning {
+        background-color: $yellow;
+    }
+    &.critical {
+        background-color: $red;
+    }
+    &.charging {
+        background-color: $green;
+    }
+    &.stale {
+        background-color: $magenta;
+    }
+}
+
+.bar-stuff-box-bg {
+    background-color: $background;
+}
+
+.bar-stuff-box {
+    background-color: $green;
+}
+
+.bar-stuff-amount {
+    color: $background;
+    font-family: "Windwaker";
+    font-size: 16px;
+}
+
+.bar-stuff-label {
+    color: #111716;
+    font-family: "Linerama"; 
+    font-weight: bold;
+}

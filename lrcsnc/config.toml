@@ -1,0 +1,48 @@
+# For more information, check wiki:
+# https://github.com/Endg4meZer0/lrcsnc/wiki/Configuration
+
+[player]
+included-players = []
+excluded-players = ["firefox", "zen"]
+
+[net]
+is-server = false
+protocol = ""
+listen-at = ""
+
+[lyrics]
+provider = "lrclib"
+timing-offset = 0.0
+
+[lyrics.romanization]
+chinese = false
+korean = false
+
+[cache]
+enabled = true
+dir = "$HOME/.cache/lrcsnc"
+life-span = 0
+
+[cache.store-condition]
+if-synced = true
+if-plain = false
+if-instrumental = true
+
+[client]
+destination = "stdout"
+template = "%text%"
+insert-newline = true
+
+[client.format]
+lyric = "%lyric%%multiplier%"
+multiplier = " (x%value%)"
+not-playing = " Nothing is playing"
+no-lyrics = "⨯ No lyrics!"
+no-synced-lyrics = "󰦨 No synced lyrics!"
+loading-lyrics = "󱥸 Loading..."
+error-message = " An error occured! Check logs for info!"
+
+[client.format.instrumental]
+interval = 0.66
+symbol = "󰎇"
+max-symbols = 3

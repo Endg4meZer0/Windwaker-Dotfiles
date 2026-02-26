@@ -1,0 +1,247 @@
+(defpoll clock-text :interval "1s"
+    `sh ./scripts/time.sh`)
+
+(defwidget clock [] 
+    (label :class "bar-widget-clock-text"
+        :text {clock-text?.["cl"]}
+        :hexpand false
+        :vexpand false
+        :show-truncated false
+        :yalign 0
+        :limit-width 6
+        :height 40
+        :halign "start"
+        :justify "left"))
+
+(defwidget date [] 
+    (label :class "bar-widget-date-text"
+        :text {clock-text?.["dt"]}
+        :hexpand false
+        :vexpand false
+        :show-truncated false
+        :yalign 0
+        :limit-width 8
+        :height 40
+        :halign "end"
+        :justify "right"))
+
+(deflisten cava-stuff
+    `sh ./scripts/cava.sh`)
+
+(defwidget cava []
+    (eventbox :class "bar-cava-eventbox"
+        :onclick "playerctl -i firefox play-pause"
+        :onmiddleclick "playerctl -i firefox previous"
+        :onrightclick "playerctl -i firefox next"
+        (box :halign "center"
+            :valign "fill"
+            :height 40
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[0]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[1]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[2]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[3]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[4]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[5]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[6]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[7]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[8]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[9]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[10]}
+                :valign "start"
+                :width 40)
+            (box
+                :class "bar-cava-block"
+                :height {cava-stuff[11]}
+                :valign "start"
+                :width 40)
+            )))
+
+(deflisten brightness-stuff
+    `sh ./scripts/brightness.sh`)
+
+(defwidget brightness []
+    (eventbox :class "bar-brightness-eventbox"
+        :onscroll "sh ./scripts/brightness_control.sh {}"
+    (overlay
+        (box :class "bar-stuff-box-bg"
+            :vexpand false
+            :height 40
+            :valign "fill"
+            :halign "end"
+            :width 32)
+        (box :class "bar-stuff-box"
+            :vexpand false
+            :height {round(brightness-stuff?.["val"]*24+16, 0)}
+            :valign "end")
+        (label :class "bar-stuff-amount"
+            :text {round(brightness-stuff?.["val"] * 100, 0)}
+            :show-truncated false
+            :height 16
+            :halign "end"
+            :valign "end"
+            :justify "right"))))
+
+(deflisten audio-stuff
+    `sh ./scripts/audio.sh`)
+
+(defwidget audio []
+    (eventbox :class "bar-audio-eventbox"
+        :onscroll "sh ./scripts/audio_control.sh {}"
+        :onclick "sh ./scripts/audio_control.sh mute"
+        (overlay
+            (box :class "bar-stuff-box-bg"
+                :vexpand false
+                :height 40
+                :valign "fill"
+                :halign "end"
+                :width 32)
+            (box :class {audio-stuff?.["bg"]}
+                :vexpand false
+                :height {round(audio-stuff?.["vol"]*24+16, 0)}
+                :valign "end")
+            (label :class "bar-stuff-amount"
+                :text {round(audio-stuff?.["vol"] * 100, 0)}
+                :show-truncated false
+                :height 16
+                :halign "end"
+                :valign "end"
+                :justify "right"))))
+
+(defpoll battery-stuff :interval "15s"
+    `sh ./scripts/battery.sh`)
+
+(defwidget battery []
+    (overlay
+        (box :class "bar-stuff-box-bg"
+            :vexpand false
+            :height 40
+            :valign "fill"
+            :halign "end"
+            :width 32)
+        (box :class {battery-stuff?.["box"]}
+            :vexpand false
+            :height {round(battery-stuff?.["amount"]/100*24+16, 0)}
+            :valign "end")
+        (label :class "bar-stuff-amount"
+            :text {battery-stuff?.["amount"]}
+            :show-truncated false
+            :height 16
+            :halign "end"
+            :valign "end"
+            :justify "right")))
+
+(defwindow bar
+    :geometry (geometry :anchor "bottom center" :x "0px" :y "0px" :width "100%" :height "40px")
+    :namespace "eww-bar" 
+    :exclusive true 
+    :stacking "fg"
+    :monitor 0
+    (box :class "bar-box-main"
+        :orientation "horizontal"
+        :halign "fill"
+        :valign "fill"
+        :hexpand false
+        :vexpand false
+        :spacing 10
+        :space-evenly true
+        (box
+            :spacing 12
+            :halign "start"
+            :space-evenly false
+            (box :width 12 :css "box { background-color: #8bf6d4; }")
+            (clock)
+            (label :text {clock-text?.["wd"]} :angle 90 :halign "right" :justify "right" :valign "center" :class "bar-stuff-label")
+            (date))
+        (cava)
+        ; (label :class "bar-cool-phrase" :text "Run forth, wind waker. Remember your purpose.")
+        (box
+            :spacing 4
+            :halign "end"
+            :space-evenly false
+            (label :text "LHT" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (brightness)
+            (label :text "VOL" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (audio)
+            (label :text "BAT" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (battery)
+            (box :width 12 :css "box { background-color: #8bf6d4; }"))
+    )
+)
+
+(defwindow bar-external
+    :geometry (geometry :anchor "bottom center" :x "0px" :y "0px" :width "100%" :height "40px")
+    :namespace "eww-bar" 
+    :exclusive true 
+    :stacking "fg"
+    :monitor 1
+    (box :class "bar-box-main"
+        :orientation "horizontal"
+        :halign "fill"
+        :valign "fill"
+        :hexpand false
+        :vexpand false
+        :spacing 10
+        :space-evenly true
+        (box
+            :spacing 12
+            :halign "start"
+            :space-evenly false
+        (clock)
+        (label :text {clock-text?.["wd"]} :angle 90 :halign "right" :justify "right" :valign "center" :class "bar-stuff-label")
+        (date))
+        (cava)
+        ; (label :class "bar-cool-phrase" :text "Run forth, wind waker. Remember your purpose.")
+        (box
+            :spacing 4
+            :halign "end"
+            :space-evenly false
+            (label :text "LHT" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (brightness)
+            (label :text "VOL" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (audio)
+            (label :text "BAT" :angle 90 :halign "end" :valign "center" :class "bar-stuff-label")
+            (battery))
+    )
+)

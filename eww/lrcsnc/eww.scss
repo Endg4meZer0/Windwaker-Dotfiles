@@ -1,0 +1,39 @@
+*{
+    all: unset
+}
+
+$background: #111716;
+$foreground: #dfefeb;
+
+$black: #485655;
+$red: #f694a5;
+$green: #8bf6d4;
+$yellow: #f5ec78;
+$blue: #8fa6f6;
+$magenta: #d895f6;
+$cyan: #79cbf5;
+$white: $foreground;
+
+.lrcsnc-text {
+    color: $green;
+    font-size: 21pt;
+    font-family: "Linerama";
+}
+
+.lrcsnc-instr {
+    color: $green;
+    font-size: 12pt;
+}
+
+.lrcsnc-title {
+    color: $green;
+    font-size: 18pt;
+    font-family: "Linerama";
+    font-weight: bold;
+}
+
+.lrcsnc-artist {
+    color: $green;
+    font-size: 18pt;
+    font-family: "Linerama";
+}

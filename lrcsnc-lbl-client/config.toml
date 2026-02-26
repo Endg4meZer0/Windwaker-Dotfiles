@@ -1,0 +1,132 @@
+# Template, where %key% is replaced to the corresponding value, if any
+# Available keys here: 
+# - %text% for current output,
+# - %instr% for the repeated symbols as described below in [instrumental]
+# - %player% for the player name
+# - %title% for the title of the song. Can be animated on song switch.
+# - %artist% for the first artist of the song (usually the album artist).
+#     Can be animated on song switch.
+# - %artists% for all artists separated by ", ". Can be animated on song switch.
+# - %album% for the album name of the song. Can be animated on song switch.
+# - %multiplier% for multiplier that shows how many times a lyric
+#     has repeated itself in a row
+template = '{"text":"%text%","instrumental":"%instr%","title":"%title%","artists":"%artists%"}'
+
+# The template for multiplier
+# Available keys here:
+# - %value% for the multiplier value
+multiplier = 'x%value%'
+
+# Forces capitization to some pattern
+# Available values:
+# - "none" for no force capitalization
+# - "uppercase" for enabled force uppercase
+# - "lowercase" for enabled force lowercase
+force-capitalization = "none"
+
+# Protocol to use to connect to the lrcsnc server,
+#   works the same way as in lrcsnc's config
+protocol = "unix" 
+
+# Path to the server, works the same way as in lrcsnc's config
+listen-at = "/tmp/lrcsnc.sock" 
+
+# This describes when the letter-by-letter animation should stop
+#   revealing the current lyric relative to the lyric 
+#   duration in percents. 
+# Set to 0 for immediate appear
+#   (though if you want it like that you should
+#   probably just use lrcsnc's internal client)
+# Default: by 40% of the lyric duration
+#   (after which, the lyric should be fully visible)
+stop-appear-at = 40
+
+# This describes when the current lyric should start to disappear 
+#   letter-by-letter relative to the lyric duration in percents. 
+# Set to 100 for immediate disappear.
+# Default: at 90% of the lyric duration 
+#   (after which, the lyric starts disappearing)
+start-disappear-at = 90
+
+# This option allows a lyric to start the disappearing animation after
+#   a switch like song switch or a seek to a position
+#   with no lyric (e.g. instrumental part with no vocals) has happened.
+# If set to false, the lyric disappears immediately.
+disappear-on-switch = true
+
+# The [info] section sets some options for keys
+#   like %title%, %artists%, etc.
+[info]
+
+# [info.animation-speed] sets animation speed for tags.
+# Animation speed is measured using letters-per-second.
+# Fun fact: it's actually float64 internally, so if you're
+#   calculative enough, you can try some weird decimal values here.
+[info.animation-speed]
+# Default: 15 lps for everything.
+title = 15
+artist = 15
+artists = 15
+album = 15
+
+# [info.always-switch] is about booleans that set 
+#   if the tag supposed to be using animation every time 
+#   a song switch happens even if the actual value stays the same 
+#   (e.g. switching to another song on the same album)
+[info.always-switch]
+# If set to true, the animation will always play even if the value is the same
+title = false
+artist = false
+artists = false
+album = false
+
+# The [instrumental] section describes the decorative thingie
+#   that shows that the song is actually playing and not stopped.
+# While enabled, the number of symbols will cycle from 1 to max-symbols
+#   at certain intervals, but only while the song is playing
+# Check the example at README for better understanding
+[instrumental]
+
+# Self-explanatory
+# Default: true
+enabled = true
+
+# The interval at which the symbols cycle ticks
+# Default: 0.66 (seconds)
+interval = 0.66 # in seconds
+
+# Self-explanatory
+# Default: "󰎇"
+symbol = "󰎇" # Can be more than one character
+
+# The maximum amount of symbols at once
+# Once the amount goes to the specified value, 
+#   the next iteration cycles back to 1 symbol 
+#   so, for example, if the set symbol is "Z" and
+#   the max-symbols is set to 3, then the maximum 
+#   you would get will be "ZZZ" before it goes back to "Z"
+# Default: 3
+max-symbols = 3
+
+# The [errors] section describes how the various messages from lrcsnc
+# should be displayed. They are never written letter-by-letter.
+[errors]
+
+# This appears when nothing is playing
+not-playing = "Nothing is playing"
+
+# This appears when there's no lyrics at all for the song
+no-lyrics = "No lyrics!"
+
+# This appears when there's no synced lyrics for the song
+no-synced-lyrics = "No synced lyrics!"
+
+# This appears while lyrics are loading for the song
+loading-lyrics = "Loading..."
+
+# This is a generic error message for server-side errors.
+error-message = "An error occured!"
+
+# If the server goes offline, there is no reconnection mechanism implemented
+# so you'll have to restart the client as well
+server-offline = "Server-side error, trying to reconnect..."

@@ -4,7 +4,7 @@
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = 0
+    monitor = eDP-1
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer
@@ -24,22 +24,22 @@
     # dynamic width from 0 to 300
     # width = (0, 300)
     # constant width of 300
-    width = (0, 600)
+    width = 1782
 
     # The height of a single notification, excluding the frame.
-    height = (0, 32)
+    height = 40
 
     # Position the notification in the top right corner
-    origin = top-left
+    origin = top-center
 
     # Offset from the origin
-    offset = 8x-32
+    offset = (0, 0)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 1
+    notification_limit = 3
 
     ### Progress bar ###
 
@@ -87,10 +87,10 @@
     # notifications.
     # Set to 0 to disable.
     # If gap_size is greater than 0, this setting will be ignored.
-    separator_height = 0
+    separator_height = 1
 
     # Padding between text and separator.
-    padding = 4
+    padding = 8
 
     # Horizontal padding.
     horizontal_padding = 16
@@ -103,7 +103,7 @@
     frame_width = 0
 
     # Defines color of the frame around the notification window.
-    frame_color = "#aaaaaa"
+    frame_color = "#111716"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -136,7 +136,7 @@
 
     ### Text ###
 
-    font = Mononoki Nerd Font Mono 12
+    font = FiraCode Nerd Font Mono 12
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -176,7 +176,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%a / %s</b>: %b"
+    format = "<b><i>%a</i> / %s</b>: %b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -184,7 +184,7 @@
 
     # Vertical alignment of message text and icon.
     # Possible values are "top", "center" and "bottom".
-    vertical_alignment = bottom
+    vertical_alignment = center
 
     # Show age of message if message is older than show_age_threshold
     # seconds.
@@ -227,7 +227,7 @@
     min_icon_size = 16
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 16
+    max_icon_size = 64
 
     # Paths to default icons (only necessary when not using recursive icon lookup)
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
@@ -246,7 +246,7 @@
     word_wrap = no
 
     # dmenu path.
-    dmenu = /usr/bin/tofi "--fuzzy-match=true" "--prompt-text=dunst: "
+    dmenu = /usr/bin/tofi "--fuzzy-match=true" "--prompt-text=react " "--placeholder-text=to her words"
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -265,7 +265,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 16
+    corner_radius = 0
 
     # Define which corners to round when drawing the window. If the corner radius
     # is set to 0 this option will be ignored.
@@ -317,9 +317,9 @@
     # * context_all: Open context menu for all notifications.
     # These values can be strung together for each mouse event, and
     # will be executed in sequence.
-    mouse_left_click = close_current
-    mouse_middle_click = do_action, close_current
-    mouse_right_click = close_all
+    mouse_left_click = do_action
+    mouse_middle_click = close_all
+    mouse_right_click = close_current
 
 # Experimental features that may or may not work correctly. Do not expect them
 # to have a consistent behaviour across releases.
@@ -337,14 +337,14 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#8bf6d4"
     foreground = "#111716"
-    timeout = 10
+    timeout = 7
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
     background = "#8bf6d4"
     foreground = "#111716"
-    timeout = 10
+    timeout = 7
     override_pause_level = 30
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
@@ -437,6 +437,15 @@
 #[fullscreen_show_critical]
 #    msg_urgency = critical
 #    fullscreen = show
+
+[band]
+    summary = "Band:*"
+    urgency = critical
+    timeout = 0
+
+[mouse]
+    summary = "VXE R1SE+"
+    skip_display = yes
 
 #[espeak]
 #    summary = "*"

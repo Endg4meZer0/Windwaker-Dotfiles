@@ -1,0 +1,135 @@
+{
+    "Name": "windwaker",
+    "Theme": "AAAAAQAAAAAAAAAA/////wAAAAACAAAABQAAAAwB//+Li/b21NQAAAAAAAUAAAANAf//Hx8mJiYmAAAAAAAA",
+    "Version": 1,
+    "Widgets": [
+        {
+            "SplitterVertical": {
+                "State": "AAAA/wAAAAEAAAACAAACfQAAABcA/////wEAAAACAA==",
+                "Widgets": [
+                    {
+                        "SplitterVertical": {
+                            "State": "AAAA/wAAAAEAAAACAAAAYgAAAakA/////wEAAAACAA==",
+                            "Widgets": [
+                                {
+                                    "SplitterHorizontal": {
+                                        "State": "AAAA/wAAAAEAAAACAAAAugAABrkA/////wEAAAABAA==",
+                                        "Widgets": [
+                                            {
+                                                "ArtworkPanel": {
+                                                    "CoverAlignment": 1,
+                                                    "CoverType": 0,
+                                                    "KeepAspectRatio": true
+                                                }
+                                            },
+                                            {
+                                                "SplitterHorizontal": {
+                                                    "State": "AAAA/wAAAAEAAAACAAAFkAAAARYA/////wEAAAABAA==",
+                                                    "Widgets": [
+                                                        {
+                                                            "WaveBar": {
+                                                                "ElapsedTotal": false,
+                                                                "ShowLabels": true
+                                                            }
+                                                        },
+                                                        {
+                                                            "SplitterVertical": {
+                                                                "State": "AAAA/wAAAAEAAAACAAAAIgAAAEEA/////wEAAAACAA==",
+                                                                "Widgets": [
+                                                                    {
+                                                                        "PlayerControls": {
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "SplitterVertical": {
+                                                                            "State": "AAAA/wAAAAEAAAACAAAAKgAAACoA/////wEAAAACAA==",
+                                                                            "Widgets": [
+                                                                                {
+                                                                                    "PlaylistControls": {
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "VolumeControls": {
+                                                                                        "Mode": 3
+                                                                                    }
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "SplitterHorizontal": {
+                                        "State": "AAAA/wAAAAEAAAACAAADogAAA9EA/////wEAAAABAA==",
+                                        "Widgets": [
+                                            {
+                                                "PlaylistTabs": {
+                                                    "Widgets": [
+                                                        {
+                                                            "Playlist": {
+                                                                "Columns": "8:132|0:2|1|7:2|2|5|22",
+                                                                "HeaderState": "AAAAhXjaY2BgYGeAA8Y2IOEFxG+A+AJUECbPCMQsQMwExKxAzAzEbCB5+w2bxJxORHLbb6l66L5OpNr+dmlB3IJ2PfutXCsTRc48sr8wd5vZouPf7M+GxKm8++1pv6fwuAwQgQxk+A8EABDbIdY=",
+                                                                "ID": "d43f4b54e76a4f95b2efdac3bf49a9f4",
+                                                                "Preset": 0,
+                                                                "SingleMode": false
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            {
+                                                "TabStack": {
+                                                    "Position": "North",
+                                                    "State": "Lyrics\u001fPlayback Queue\u001fDirectory Browser",
+                                                    "Widgets": [
+                                                        {
+                                                            "Lyrics": {
+                                                            }
+                                                        },
+                                                        {
+                                                            "PlaybackQueue": {
+                                                            }
+                                                        },
+                                                        {
+                                                            "DirectoryBrowser": {
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "SplitterHorizontal": {
+                            "State": "AAAA/wAAAAEAAAACAAAGkQAAAOIA/////wEAAAABAA==",
+                            "Widgets": [
+                                {
+                                    "StatusBar": {
+                                    }
+                                },
+                                {
+                                    "PeakMeter": {
+                                        "Orientation": 2,
+                                        "ShowLegend": false,
+                                        "ShowPeaks": false
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -13,10 +13,10 @@
 	# characters not in the chosen font will fail to render.
 	#
 	# Otherwise, fonts are interpreted in Pango format.
-	font = "/usr/share/fonts/TTF/MononokiNerdFontMono-Regular.ttf"
+	font = "FiraCode Nerd Font Propo"
 
 	# Point size of text.
-	font-size = 16
+	font-size = 18
 
 	# Comma separated list of OpenType font feature settings to apply,
 	# if supported by the chosen font. The format is similar to the CSS
@@ -42,7 +42,7 @@
 	# specified via `font`. Disabling font hinting speeds up text
 	# rendering appreciably, but will likely look poor at small font pixel
 	# sizes.
-	hint-font = true
+	hint-font = false
 
 #
 ### Text theming
@@ -50,7 +50,7 @@
 	# Default text color
 	#
 	# All text defaults to this color if not otherwise specified.
-	text-color = #DDDDDD
+	text-color = #E3E3E3
 
 	# All pieces of text have the same theming attributes available:
 	#
@@ -68,25 +68,25 @@
 	#     Radius of background box corners in pixels
 
 	# Prompt text theme
-	# prompt-color = #FFFFFF
+	prompt-color = #E3E3E3
 	prompt-background = #00000000
 	prompt-background-padding = 0
 	prompt-background-corner-radius = 0
 
 	# Placeholder text theme
-	placeholder-color = #FFFFFFA8
+	placeholder-color = #E3E3E3B8
 	placeholder-background = #00000000
 	placeholder-background-padding = 0
 	placeholder-background-corner-radius = 0
 
 	# Input text theme
-	# input-color = #FFFFFF
+	input-color = #E3E3E3
 	input-background = #00000000
 	input-background-padding = 0
 	input-background-corner-radius = 0
 
 	# Default result text theme
-	# default-result-color = #FFFFFF
+	default-result-color = #E3E3E3
 	default-result-background = #00000000
 	default-result-background-padding = 0
 	default-result-background-corner-radius = 0
@@ -108,7 +108,7 @@
 	selection-background-corner-radius = 0
 
 	# Matching portion of selection text
-	selection-match-color = #00000000
+	selection-match-color = #f5ec78
 
 
 #
@@ -117,7 +117,7 @@
 	# Style of the optional text cursor.
 	#
 	# Supported values: bar, block, underscore
-	text-cursor-style = bar
+	text-cursor-style = block
 
 	# Color of the text cursor
 	#
@@ -142,17 +142,17 @@
 ### Text layout
 #
 	# Prompt to display.
-	prompt-text = "why not run: "
+	prompt-text = "why don't you run"
 
 	# Extra horizontal padding between prompt and input.
 	prompt-padding = 20
 
 	# Placeholder input text.
-	placeholder-text = ""
+	placeholder-text = "towards her?"
 
 	# Maximum number of results to display.
 	# If 0, tofi will draw as many results as it can fit in the window.
-	num-results = 5
+	num-results = 7
 
 	# Spacing between results in pixels. Can be negative.
 	result-spacing = 20
@@ -171,7 +171,7 @@
 	height = 100%
 
 	# Window background color
-	background-color = #000B
+	background-color = #000D
 
 	# Width of the border outlines in pixels.
 	outline-width = 0
@@ -189,7 +189,7 @@
 	corner-radius = 0
 
 	# Padding between borders and text. Can be pixels or a percentage.
-	padding-top = 41%
+	padding-top = 37%
 	padding-bottom = 0
 	padding-left = 37%
 	padding-right = 10%
@@ -294,7 +294,7 @@
 	# The terminal to run terminal programs in when in drun mode.
 	# This option has no effect if drun-launch is set to true.
 	# Defaults to the value of the TERMINAL environment variable.
-	# terminal = foot
+	terminal = kitty
 
 	# Delay keyboard initialisation until after the first draw to screen.
 	# This option is experimental, and will cause tofi to miss keypresses
